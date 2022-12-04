@@ -1,0 +1,51 @@
+.aside{
+  background-color: rgb(63, 59, 83);
+  height: auto;
+   padding: 5px;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   grid-column: 1;
+ }
+
+ .li{
+  list-style-type: none;
+  margin: 25px 0;
+  width: 100%;
+  margin: 7% 0;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+.li a{
+  text-decoration:none;
+  color:white
+}
+
+li:hover {
+  background-color: rgb(255, 85, 85);
+  color: white;
+}
+
+.ul{
+  padding: 0;
+}
+
+.article {
+    height: 139px;
+    background-color: coral;
+    margin: 15px 0;
+    width: 90%;
+}
+
+.nav {
+  color: blue;
+}
+
+.newsBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+

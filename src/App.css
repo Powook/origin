@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:wght@400;500;600&display=swap');
+
+*{
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+}
+
+.box{
+  width: 1200px;
+  display: grid;
+  grid-template-rows: 60px 1fr 60px;
+  grid-template-columns: 1fr 4fr;
+  gap: 10px;
+  margin: 50px auto;
+}
+
+.box-main-wrapper{
+  grid-column: 2/4;
+}
+
+body {
+  background-color: rgb(180, 180, 180);
+}
+
+
