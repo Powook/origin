@@ -3,7 +3,15 @@ import c from './PostCreate.module.css'
 
 const PostCreator = (props)=> {
    let newPostElement = React.createRef()
-   
+
+   function addPost(postContent) {
+      if (newPostElement.current.value){
+      let content = newPostElement.current.value;
+      props.addPost(content)
+      newPostElement.current.value= ''
+   }
+}
+
    return (
       <div className={c.PostCreator}>
          <div className={c.InputBlock}>
@@ -12,7 +20,7 @@ const PostCreator = (props)=> {
          </div>
          <div className={c.ButtonBlock}>
             <button>Timeout</button>
-            <button onClick={props.addPost}>Public</button>
+            <button onClick={addPost}>Public</button>
          </div>
       </div>
    )

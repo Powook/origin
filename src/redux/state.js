@@ -1,3 +1,4 @@
+import { rerenderTree } from "../render"
 
 
 let state ={
@@ -33,9 +34,9 @@ let state ={
 }
 
 export function addPost(postContent){
-   state.profilePage.posts.push(
-      {id:4887, content: postContent, author: 'Maksimba', date: String(new Date())}
-   )
-}
-
+      state.profilePage.posts.push(
+         {id:4887, content: postContent , author: 'Maksimba', date: `${new Date().toLocaleString()}`}
+      )
+      rerenderTree(state)
+   }
 export default state
