@@ -7,7 +7,7 @@ const Posts = (props)=> {
    let posts = props.posts.map(post=><Post content={post.content} key={post.id} author={post.author} date={post.date}/>)
    return (
       <div className={c.Posts}>
-         <PostCreator addPost={props.addPost}/>
+         <PostCreator addPost={props.addPost} changePost={props.changePost} createPostInput = {props.createPostInput} />
          {posts}
       </div>
    )

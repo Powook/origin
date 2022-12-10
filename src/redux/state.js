@@ -25,6 +25,7 @@ let state ={
        ]
    },
    profilePage: {
+      createPostInput: 'xxx',
       posts: [
          {id:1, content: 'Haha. its my first post!', author: 'Maksimba', date: '02.12.22 0:18'},
          {id:2, content: 'Wow. its second!', author: 'Maksimba', date: '02.12.22 0:19'},
@@ -33,10 +34,16 @@ let state ={
    }
 }
 
+export function changePostInput (x) {
+   state.profilePage.createPostInput=x;
+   rerenderTree(state)
+}
+
 export function addPost(postContent){
       state.profilePage.posts.push(
          {id:4887, content: postContent , author: 'Maksimba', date: `${new Date().toLocaleString()}`}
       )
+      state.profilePage.createPostInput=''
       rerenderTree(state)
    }
 export default state

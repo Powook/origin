@@ -12,11 +12,16 @@ const PostCreator = (props)=> {
    }
 }
 
+function changePost () {
+   props.changePost(newPostElement.current.value)
+}
+
+
    return (
       <div className={c.PostCreator}>
          <div className={c.InputBlock}>
             <img src="https://coolsen.ru/wp-content/uploads/2021/06/15-8.jpg" alt="" />
-            <textarea  ref={newPostElement}/>
+            <textarea  ref={newPostElement} value={props.createPostInput} onChange={changePost}/>
          </div>
          <div className={c.ButtonBlock}>
             <button>Timeout</button>
