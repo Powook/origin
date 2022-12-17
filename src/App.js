@@ -9,7 +9,6 @@ import Messages from './components/ContentBox/Messages/Messages';
 import Photo from './components/ContentBox/Photo/Photo';
 import Friends from './components/ContentBox/Friends/Friends';
 import Settings from './components/ContentBox/Settings/Settings';
-import {addPost, changePostInput} from './redux/state'
 
 function App(props) {
   return(
@@ -18,8 +17,8 @@ function App(props) {
         <Aside/>
         <div className='box-main-wrapper'>
           <Routes>
-            <Route path ="/profile" element={<Main state ={props.state.profilePage} addPost={addPost} changePost = {changePostInput} createPostInput ={props.state.profilePage.createPostInput}/>}/>
-            <Route path='/messages' element ={<Messages state={props.state.dialogsPage} />}/>
+            <Route path ="/profile" element={<Main state ={props.store.profilePage} dispatch={props.dispatch}/>}/>
+            <Route path='/messages' element ={<Messages state={props.store.dialogsPage} />}/>
             <Route path='/photo' element={<Photo/>}/>
             <Route path='/friends' element={<Friends/>}/>
             <Route path='/settings' element={<Settings/>}/>

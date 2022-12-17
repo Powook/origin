@@ -1,7 +1,5 @@
-import { rerenderTree } from "../render"
-
-
-let state ={
+const store = {
+  _state: {
    dialogsPage:{
       messageData: [
          {msg: 'hahaha', id:0},
@@ -25,25 +23,34 @@ let state ={
        ]
    },
    profilePage: {
-      createPostInput: 'xxx',
+      postTextArea: 'xxx',
       posts: [
          {id:1, content: 'Haha. its my first post!', author: 'Maksimba', date: '02.12.22 0:18'},
          {id:2, content: 'Wow. its second!', author: 'Maksimba', date: '02.12.22 0:19'},
          {id:3, content: 'ewew ^_^', author: 'Maksimba', date: '02.12.22 0:21'}
       ]
    }
-}
+},
+getState () {
+   return this._state
+},
+   subscribe (observer){
+      this.rerenderTree=observer;
+   },
+   dispatch (action) {
+      if (action.type==='ADD-POST') {
+         this._state.profilePage.posts.unshift(
+            {id:4887, content: action.postContent , author: 'Maksimba', date: `${new Date().toLocaleString()}`}
+         )
 
-export function changePostInput (x) {
-   state.profilePage.createPostInput=x;
-   rerenderTree(state)
-}
-
-export function addPost(postContent){
-      state.profilePage.posts.push(
-         {id:4887, content: postContent , author: 'Maksimba', date: `${new Date().toLocaleString()}`}
-      )
-      state.profilePage.createPostInput=''
-      rerenderTree(state)
+         this._state.profilePage.postTextArea=''
+         this.rerenderTree(this._state)
+      } 
+      else if (action.type==='CHANGE-INPUT') {
+         this._state.profilePage.postTextArea=action.change;
+         this.rerenderTree(this._state)
+      }
    }
-export default state
+}
+
+export default store
