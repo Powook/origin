@@ -5,6 +5,19 @@ import Message from "./Message/Message";
 const Chat =props=>{
    
    let messages = props.messageData.map(item=><Message message={item.msg} key={item.id}/>)
+   
+   function sendMessage (event) {
+      props.dispatch({
+         type: 'SEND-MESSAGE'
+      })
+   }
+
+   function msgChangeInputValue(event){
+      let body =event.target.value
+      props.dispatch({
+         type: 'MSG-CHANGE-INPUT', currentMessageText: body
+      })
+   }
 
    return(
       <div className={c.chat}>
@@ -15,8 +28,8 @@ const Chat =props=>{
             {messages}
           </div>
          <div className={c.inputBlock}>
-            <div contentEditable='true' className={c.textbox}></div>
-            <button>Send</button>
+            <textarea className={c.textbox}  value={props.messageInputValue} onChange={msgChangeInputValue}></textarea>
+            <button onClick={sendMessage}>Send</button>
          </div>
       </div>
    )

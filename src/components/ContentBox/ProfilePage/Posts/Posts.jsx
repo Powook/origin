@@ -5,7 +5,6 @@ import Post from './Post/Post'
 
 const Posts = (props)=> {
    let posts = props.posts.map(post=><Post content={post.content} key={post.id} author={post.author} date={post.date}/>)
-   console.log(props)
    return (
       <div className={c.Posts}>
          <PostCreator dispatch={props.dispatch} postTextArea ={props.postTextArea}  />

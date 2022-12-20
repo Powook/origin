@@ -11,7 +11,7 @@ const Messages = (props)=>{
          <div className={c.dialogs}>
             {dialogs}
          </div>
-         <Chat messageData={props.state.messageData}/>
+         <Chat messageData={props.state.messageData} dispatch={props.dispatch} messageInputValue={props.state.messageInputValue}/>
       </div>
    )
 }

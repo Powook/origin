@@ -18,7 +18,7 @@ function App(props) {
         <div className='box-main-wrapper'>
           <Routes>
             <Route path ="/profile" element={<Main state ={props.store.profilePage} dispatch={props.dispatch}/>}/>
-            <Route path='/messages' element ={<Messages state={props.store.dialogsPage} />}/>
+            <Route path='/messages' element ={<Messages state={props.store.dialogsPage} dispatch={props.dispatch} />}/>
             <Route path='/photo' element={<Photo/>}/>
             <Route path='/friends' element={<Friends/>}/>
             <Route path='/settings' element={<Settings/>}/>

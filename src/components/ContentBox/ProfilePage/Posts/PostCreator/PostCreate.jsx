@@ -16,8 +16,9 @@ const PostCreator = (props)=> {
 }
 
 function changePost () {
+   // debugger;
    props.dispatch({
-      type: 'CHANGE-INPUT',
+      type: 'POST-CHANGE-INPUT',
       change: newPostElement.current.value
    })
 }
