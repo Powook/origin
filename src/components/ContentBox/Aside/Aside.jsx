@@ -10,8 +10,10 @@ const Aside = ()=> {
               <li className ={c.li}><NavLink to ='/profile'>Home</NavLink></li>
               <li className ={c.li}><NavLink to ='/messages'>Mesages</NavLink></li>
               <li className ={c.li}><NavLink to ='/friends'>Friends</NavLink></li>
+              <li className ={c.li}><NavLink to ='/users'>Users</NavLink></li>
               <li className ={c.li}><NavLink to ='/photo'>Photo</NavLink></li>
               <li className ={c.li}><NavLink to ='/settings'>Settings</NavLink></li>
+
             </ul>
           </nav>
           <div className={c.newsBlock}>

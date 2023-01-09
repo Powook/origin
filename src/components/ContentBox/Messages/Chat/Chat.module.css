@@ -4,7 +4,7 @@
    width: 100%;
 }
 
-.chat{
+.textarea{
    display: grid;
    grid-template-rows: 1fr 16fr 2fr;
    grid-column: 2/3;
@@ -35,4 +35,9 @@
    background-color: aquamarine;
    color: white;
    border: none;
+}
+
+.main {
+   height: 780px;
+   overflow-y: scroll;
 }

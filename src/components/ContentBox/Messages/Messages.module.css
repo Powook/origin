@@ -12,3 +12,47 @@
    border-right: 1px solid rgb(213, 213, 213);
    flex-direction:column;
 }
+
+.header{
+   background-color: rgb(63, 59, 83);
+   color: white;
+   width: 100%;
+}
+
+.textarea{
+   display: grid;
+   grid-template-rows: 1fr 16fr 2fr;
+   grid-column: 2/3;
+}
+
+.textbox{
+   width: 80%;
+   min-height: 80%;
+   height: auto;
+   border: 1px solid rgb(213, 213, 213);
+   border-radius: 7px;
+   margin: 5px;
+   outline: none;
+   padding: 4px;
+}
+
+.inputBlock{
+   display: flex;
+   padding: 10px;
+   justify-content: space-around;
+   align-items: center;
+   border: 1px solid rgb(232, 232, 232);
+}
+
+.inputBlock button {
+   height: 50%;
+   border-radius: 7px;
+   background-color: aquamarine;
+   color: white;
+   border: none;
+}
+
+.main {
+   height: 780px;
+   overflow-y: scroll;
+}

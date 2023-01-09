@@ -1,0 +1,60 @@
+.userCard {
+   display: flex;
+   padding: 10px;
+   background-color: white;
+   margin: 0 0 10px 0;
+}
+
+.avatarBlock {
+   width: 100px;
+   height: 100px;
+   background-color: red;
+   margin-right: 15px;
+}
+
+.avatar {
+   width: 100px;
+   height: 100px;
+   object-fit: cover;
+   border: 1px solid rgb(156, 156, 156)
+}
+
+.userInfoBlock {
+   height: 100px;
+   width: 80%;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+}
+
+.name a {
+   font-weight: 600;
+   color: rgb(51, 51, 51);
+   text-decoration: none;
+}
+
+.location a {
+   color: rgb(59, 112, 141);
+   text-decoration: none;
+   cursor: pointer;
+}
+
+.followBlock {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+
+.followBlock button {
+   width: 100px;
+   height: 40px;
+}
+
+.selectedPage {
+   font-weight: 800;
+}
+
+.navigation span {
+   cursor: pointer;
+}
+
