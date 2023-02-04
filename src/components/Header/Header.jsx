@@ -1,7 +1,8 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import c from './Header.module.css'
 
-const Header = ()=>{
+const Header = (props)=>{
    return (
       <header className={c.header}>
          <div className={c.leftblock}>
@@ -10,9 +11,12 @@ const Header = ()=>{
          </div>
          <div className={c.login}>
             <div className={c.userBlock}> 
-               <img src="https://noblegarden.net/uploads/avatar/thumb/DbtrFLiX0AEnCwr.jpg%20large.jpgthumb_11593.jpg" alt="" className={c.avatar}/>
-               <span>Name Surname</span></div>
-            <button className={c.loginBtn}>Logout</button>
+            {
+               <img src={props.isAuth? props.avatar : null} alt="" className={c.avatar}/>
+            }
+               </div>
+               {props.login ? props.login : <NavLink to={'/login'} >Login</NavLink> }
+
          </div>
       </header>
    )

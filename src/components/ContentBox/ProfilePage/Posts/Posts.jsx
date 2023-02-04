@@ -1,27 +1,26 @@
 import React from 'react'
 import c from './Posts.module.css'
 import Post from './Post/Post'
+import Preloader from '../../../common/preloader/Preloader'
 
 const Posts = (props) => {
-
-   let posts = props.posts.map(post => <Post content={post.content} key={post.id} author={post.author} date={post.date} />)
+   let posts = props.posts.map(post => <Post preloader ={<Preloader/>} content={post.content} key={post.id} author={props.currentProfile? props.currentProfile.fullName : ' '} date={post.date} avatar={props.currentProfile ? props.currentProfile.photos : null}/>)
    let newPostElement = React.createRef()
 
    function onAddPost (){
-      props.AddPost(newPostElement)
+      props.addPost(newPostElement)
    }
 
    function onChangePost () {
-      props.ChangePost(newPostElement.current.value)
+      props.changePost(newPostElement.current.value)
    }
-
    return (
       <div className={c.Posts}>
 
          <div className={c.PostCreator}>
 
             <div className={c.InputBlock}>
-               <img src="https://coolsen.ru/wp-content/uploads/2021/06/15-8.jpg" alt="" />
+               <img src={props.currentProfile ? props.currentProfile.photos.large : null} alt="" className={c.PostCreateAvatar} />
                <textarea ref={newPostElement} value={props.postTextArea} onChange={onChangePost} />
             </div>
 

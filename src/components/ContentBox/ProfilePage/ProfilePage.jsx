@@ -2,16 +2,16 @@ import React from 'react'
 import ProfileHeader from './ProfileHeader/ProfileHeader'
 import ProfileStories from './ProfileStories/ProfileStories'
 import c from './ProfilePage.module.css'
-import PostsContainer from './Posts/PostsContainer'
+import Posts from './Posts/Posts'
 
-const Main =(props)=>{
+const Profile =(props)=>{
    return (
       <main className={c.main}>
-         <ProfileHeader/>
+         <ProfileHeader currentProfile={props.currentProfile}/>
          <ProfileStories/>
-         <PostsContainer />
+         <Posts {...props} />
       </main>
    )
 }
 
-export default Main
+export default Profile

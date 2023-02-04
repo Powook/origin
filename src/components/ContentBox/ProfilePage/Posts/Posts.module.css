@@ -59,3 +59,9 @@
    justify-content: space-around;
    margin-bottom: 10px;
 }
+
+.PostCreateAvatar {
+   object-fit: cover;
+   width: 80px;
+   height: 80px;
+}

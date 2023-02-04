@@ -54,7 +54,22 @@
    font-weight: 800;
 }
 
+.navigation {
+   background-color: white;
+   text-align: center;
+   border-bottom: 1px solid rgb(227, 227, 227);
+   user-select: none;
+}
+
 .navigation span {
+   cursor: pointer;
+   color: black;
+}
+
+.toFirst, .toEnd {
+   height: 18px;
+   width: auto;
+   opacity: .5;
    cursor: pointer;
 }
 
