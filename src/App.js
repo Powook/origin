@@ -1,6 +1,6 @@
 //  import logo from './logo.svg';
 import './App.css';
-  import Aside from './components/ContentBox/Aside/Aside';
+import Aside from './components/ContentBox/Aside/Aside';
 import { Route, Routes } from 'react-router-dom';
 import MessagesContainer from './components/ContentBox/Messages/MessagesContainer';
 import Photo from './components/ContentBox/Photo/Photo';
@@ -9,6 +9,7 @@ import Settings from './components/ContentBox/Settings/Settings';
 import UsersContainer from './components/ContentBox/Users/UsersContainer';
 import { ProfilePageContainer } from './components/ContentBox/ProfilePage/ProfilePageContainer';
 import {HeaderContainer} from './components/Header/HeaderContainer';
+import LoginPage from './components/ContentBox/Login/LoginPage';
 
 function App(props) {
   return(
@@ -23,7 +24,8 @@ function App(props) {
             <Route path='/photo' element={<Photo/>}/>
             <Route path='/friends' element={<Friends/>}/>
             <Route path='/settings' element={<Settings/>}/>
-            <Route path='users' element ={<UsersContainer/>}/>
+            <Route path='/users' element ={<UsersContainer/>}/>
+            <Route path='/login' element ={<LoginPage/>}/>
           </Routes>
         </div>
       </div>

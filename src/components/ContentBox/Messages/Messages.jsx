@@ -6,7 +6,6 @@ import Message from './Chat/Message/Message'
 
 
 const Messages = (props)=>{
-
    let dialogs =props.state.usersData.map(user=><Dialog userName={user.name} id = {user.id} key={user.id} />)
    let messages = props.state.messageData.map(item=><Message message={item.msg} key={item.id} date={item.date}/>)
 

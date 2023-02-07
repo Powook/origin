@@ -1,9 +1,11 @@
 import { connect } from "react-redux";
+import { withAuthRedirect } from "../../../hoc/withAuthRedirect";
 import Messages from "./Messages";
 
 function f1 (state) {
    return {
-      state: state.dialogsPage
+      state: state.dialogsPage,
+      isAuth: state.auth.isAuth
    }
 }
 
@@ -23,6 +25,8 @@ function f2 (dispatch) {
    }
 }
 
-const MessagesContainer = connect (f1,f2) (Messages)
+let withAuthComponent = withAuthRedirect(Messages)
+
+const MessagesContainer = connect (f1,f2) (withAuthComponent)
 
 export default MessagesContainer

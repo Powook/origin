@@ -12,10 +12,10 @@ const Header = (props)=>{
          <div className={c.login}>
             <div className={c.userBlock}> 
             {
-               <img src={props.isAuth? props.avatar : null} alt="" className={c.avatar}/>
+               <img src={props.isAuth? props.avatar : null } alt="" className={c.avatar}/>
             }
                </div>
-               {props.login ? props.login : <NavLink to={'/login'} >Login</NavLink> }
+               {props.isAuth ? props.login : <NavLink to={'/login'} >Login</NavLink> }
 
          </div>
       </header>

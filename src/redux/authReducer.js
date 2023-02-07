@@ -1,3 +1,5 @@
+import { userApi } from "../dataAccsessLayer/api"
+
 let initState ={
    login: null,
    email: null,
@@ -9,7 +11,6 @@ let initState ={
 function authReducer(state = initState, action) {
    switch (action.type) {
       case 'SET_AUTH_USER_PROFILE':
-         if (action.login) {
          return {
             ...state,
             login: action.login,
@@ -18,7 +19,6 @@ function authReducer(state = initState, action) {
             avatar: action.avatar,
             isAuth: true
          }
-      }  else return state
 
          default: 
          return state
@@ -26,5 +26,19 @@ function authReducer(state = initState, action) {
 }
 
 export const setAuthUser = (id, login, email, avatar) => ({type: 'SET_AUTH_USER_PROFILE', login, email, id, avatar})
+
+export const setAuthUserDataThunk = (noavatar)=> dispatch=>{
+   userApi.authMe().then(response => {
+      if (response.data.login) {
+         let { id, login, email } = response.data
+         userApi.getProfile(id)
+            .then(response => {
+               let avatar
+               response.photos.small ?  avatar=response.photos.small : avatar=noavatar
+               dispatch(setAuthUser(id, login, email, avatar))
+            })
+      }
+   })
+}
 
 export default authReducer

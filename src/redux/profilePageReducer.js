@@ -1,3 +1,5 @@
+import { userApi } from "../dataAccsessLayer/api";
+
 let initState = {
    postTextArea: '',
    posts: [
@@ -6,7 +8,7 @@ let initState = {
       { id: 3, content: 'ewew ^_^', author: 'Maksimba', date: '02.12.22 0:21' }
    ],
    currentProfile: null,
-stories: []
+   stories: [],
 };
 
 function profilePageReducer(state = initState, action) {
@@ -41,5 +43,20 @@ function profilePageReducer(state = initState, action) {
 export const addPost = () => ({ type: 'ADD-POST', date: new Date().toLocaleString() })
 export const changePost = text => ({ type: 'POST-CHANGE-INPUT', change: text })
 export const setUserProfile = user => ({ type: 'SET_USER_PROFILE', user })
+
+export function setUserProfileThunk(avatar, userID) {
+   return dispatch => {
+      if (!userID) {userID=27525}
+      userApi.getProfile(userID).then(response => {
+         if (!response.photos.small || !response.photos.large) {
+            response.photos.small = avatar
+            response.photos.large = avatar
+         }
+         dispatch(setUserProfile(response))
+      })
+   }
+}
+
+
 
 export default profilePageReducer;

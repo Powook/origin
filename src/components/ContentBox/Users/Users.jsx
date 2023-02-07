@@ -4,7 +4,6 @@ import c from './Users.module.css'
 import userPhoto from '../../../assets/images/noAvatar.png'
 import paginationleft from '../../../icons/paginationleft.svg'
 import paginationright from '../../../icons/paginationright.svg'
-import { userApi } from "../../../dataAccsessLayer/api";
 
 function Users(props) {
    let maxPages = Math.ceil(props.totalUsersCount / props.usersCountOnPage)
@@ -20,7 +19,7 @@ function Users(props) {
       pages=[ maxPages-4, maxPages-3,maxPages-2,maxPages-1, maxPages]
    }
    let pagesSpan = pages.map(p => {
-      return <span className={props.currentPage === p && c.selectedPage}
+      return <span className={props.currentPage === p && c.selectedPage ? props.currentPage === p && c.selectedPage : '' }
          onClick={() => props.onChangePage(p)}
       >{p}</span>
    })
