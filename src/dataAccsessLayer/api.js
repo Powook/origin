@@ -11,12 +11,10 @@ export const userApi = {
          .then(response => response.data)
    },
    getProfile(id) {
-      return instance.get(`profile/${id}`)
-         .then(response =>response.data)
+      return profileApi.getProfile(id)
    },
    authMe() {
-      return instance.get('auth/me')
-         .then(response => response.data)
+      return authApi.me()
    },
    follow(id) {
       return instance.post(`follow/${id}`, { }) 
@@ -24,5 +22,31 @@ export const userApi = {
    },
    unfollow(id) {
       return instance.delete(`follow/${id}`)
+   }
+}
+
+export const profileApi = {
+   getProfile (id) {
+      return instance.get(`profile/${id}`)
+      .then(response =>response.data)
+   },
+   getStatus (id) {
+      return instance.get(`profile/status/${id}`)
+   },
+   setStatus(status) {
+      return instance.put(`profile/status`, {status})
+   }
+
+}
+
+export const authApi = {
+   me () {
+      return instance.get(`auth/me`)
+   }, 
+   login(email, password) {
+      return instance.post( '/auth/login' , {email, password} )
+   },
+   logout () {
+      return instance.delete(`auth/me`)
    }
 }

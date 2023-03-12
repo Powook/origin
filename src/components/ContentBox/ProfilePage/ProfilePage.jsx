@@ -5,9 +5,10 @@ import c from './ProfilePage.module.css'
 import Posts from './Posts/Posts'
 
 const Profile =(props)=>{
+   const {status, currentProfile, updateProfileStatus} = props
    return (
       <main className={c.main}>
-         <ProfileHeader currentProfile={props.currentProfile}/>
+         <ProfileHeader currentProfile={currentProfile} status={status} updateProfileStatus={updateProfileStatus}/>
          <ProfileStories/>
          <Posts {...props} />
       </main>

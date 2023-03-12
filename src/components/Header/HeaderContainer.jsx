@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import Header from "./Header";
-import { setAuthUserDataThunk} from '../../redux/authReducer'
+import { setAuthUserDataThunk, logout} from '../../redux/authReducer'
 import noAvatar from '../../assets/images/noAvatar.png'
 
-class HeaderContainerApi extends React.Component {
-   componentDidMount() {
-      this.props.setAuthUserDataThunk(noAvatar)
+function HeaderContainerApi (props) {
+
+   const {setAuthUserDataThunk} = props
+
+   useEffect (( )=> {
+     setAuthUserDataThunk(noAvatar)
+   }, [setAuthUserDataThunk])
+
+      return <Header {...props} />
    }
-   render() {
-      return <Header {...this.props} />
-   }
-}
 
 function f1(state) {
    return {
@@ -23,4 +25,4 @@ function f1(state) {
    }
 }
 
-export const HeaderContainer = connect(f1, {setAuthUserDataThunk })(HeaderContainerApi)
+export const HeaderContainer = connect(f1, {setAuthUserDataThunk, logout })(HeaderContainerApi)

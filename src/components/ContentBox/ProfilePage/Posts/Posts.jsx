@@ -4,15 +4,18 @@ import Post from './Post/Post'
 import Preloader from '../../../common/preloader/Preloader'
 
 const Posts = (props) => {
-   let posts = props.posts.map(post => <Post preloader ={<Preloader/>} content={post.content} key={post.id} author={props.currentProfile? props.currentProfile.fullName : ' '} date={post.date} avatar={props.currentProfile ? props.currentProfile.photos : null}/>)
+
+const {posts, currentProfile, postTextArea, addPost, changePost} = props
+
+   let postList = posts.map(post => <Post preloader ={<Preloader/>} content={post.content} key={post.id} author={currentProfile ? currentProfile.fullName : ' '} date={post.date} avatar={currentProfile ? currentProfile.photos : null}/>)
    let newPostElement = React.createRef()
 
    function onAddPost (){
-      props.addPost(newPostElement)
+      addPost()
    }
 
    function onChangePost () {
-      props.changePost(newPostElement.current.value)
+      changePost(newPostElement.current.value)
    }
    return (
       <div className={c.Posts}>
@@ -20,8 +23,8 @@ const Posts = (props) => {
          <div className={c.PostCreator}>
 
             <div className={c.InputBlock}>
-               <img src={props.currentProfile ? props.currentProfile.photos.large : null} alt="" className={c.PostCreateAvatar} />
-               <textarea ref={newPostElement} value={props.postTextArea} onChange={onChangePost} />
+               <img src={currentProfile ? currentProfile.photos.large : null} alt="" className={c.PostCreateAvatar} />
+               <textarea ref={newPostElement} value={postTextArea} onChange={onChangePost} />
             </div>
 
             <div className={c.ButtonBlock}>
@@ -32,7 +35,7 @@ const Posts = (props) => {
          </div>
 
          <div>
-            {posts}
+            {postList}
          </div>
       </div>
    )

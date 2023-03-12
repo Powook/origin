@@ -9,6 +9,7 @@ function Users(props) {
    let maxPages = Math.ceil(props.totalUsersCount / props.usersCountOnPage)
    let pages = []
 
+   // eslint-disable-next-line no-lone-blocks
    {for (let i=props.currentPage-2; i<=props.currentPage+2; i++){
       pages.push(i)
    }
@@ -34,16 +35,16 @@ function Users(props) {
 
             <div className={c.userInfoBlock}>
                <div className={c.name}><NavLink to={`/profile/` + u.id}>{u.name}</NavLink></div>
-               <div className={c.location}><a className={c.location}>Russia</a></div>
+               <div className={c.location}><a href='somewhere' className={c.location}>Russia</a></div>
                <div><button>Написать сообщение</button></div>
             </div>
 
             <div className={c.followBlock}>
                {u.followed
-                  ? <button disabled={props.btn.some(id=> id== u.id)} onClick={() => { 
+                  ? <button disabled={props.btn.some(id=> id=== u.id)} onClick={() => { 
                      props.followUser(u.id)
                   }}>Unfollow</button>
-                  : <button disabled={props.btn.some(id=> id== u.id)} onClick={() => { 
+                  : <button disabled={props.btn.some(id=> id=== u.id)} onClick={() => { 
                      props.unfollowUser(u.id)
                   }}>Follow</button>
                }

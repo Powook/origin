@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { compose } from "redux";
 import { withAuthRedirect } from "../../../hoc/withAuthRedirect";
 import Messages from "./Messages";
 
@@ -25,8 +26,9 @@ function f2 (dispatch) {
    }
 }
 
-let withAuthComponent = withAuthRedirect(Messages)
 
-const MessagesContainer = connect (f1,f2) (withAuthComponent)
+const MessagesContainer = compose (connect (f1,f2),
+withAuthRedirect)
+(Messages)
 
 export default MessagesContainer

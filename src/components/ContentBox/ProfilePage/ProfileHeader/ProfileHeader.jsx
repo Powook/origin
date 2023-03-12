@@ -1,6 +1,7 @@
 import React from 'react'
 import Preloader from '../../../common/preloader/Preloader'
 import c from './ProfileHeader.module.css'
+import ProfileStatus from './ProfileStatus'
 
 const ProfileHeader = (props) => {  
    if (props.currentProfile===null || props.currentProfile ===undefined) {
@@ -13,7 +14,7 @@ const ProfileHeader = (props) => {
                <img className={c.userAvatar} src={props.currentProfile.photos.large} alt="" />
                <div className={c.userInfo}>
                   <div className={c.item}>{props.currentProfile.fullName}</div>
-                  <div className={c.item}>{props.currentProfile.aboutMe}</div>
+                  <ProfileStatus {...props}/>
                   <div className={c.item}>About</div>
                </div>
             </div>

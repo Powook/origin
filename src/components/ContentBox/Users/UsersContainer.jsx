@@ -1,34 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import Users from "./Users";
 import Preloader from "../../common/preloader/Preloader";
-import {follow, unfollow, setCurrentPage, buttonIsFetching, getUsersThunk, followUser, unfollowUser} from "../../../redux/usersPageReducer";
+import { setCurrentPage, buttonIsFetching, getUsersThunk, followUser, unfollowUser} from "../../../redux/usersPageReducer";
 
-class UsersContainerAPI extends React.Component {
+function UsersContainerAPI(props) {
 
-   componentDidMount() {
-      this.props.getUsersThunk(this.props.usersCountOnPage, this.props.currentPage)
+   const {usersCountOnPage, currentPage, totalUsersCount, users, buttonIsFetching, btn, followUser, unfollowUser, getUsersThunk } = props
+
+   useEffect ( ( ) => {
+      getUsersThunk(usersCountOnPage, currentPage)
+   }, [currentPage, getUsersThunk, usersCountOnPage])
+
+   const onChangePage = (p) => {
+      props.getUsersThunk(props.usersCountOnPage, p)
+      props.setCurrentPage(p)
    }
 
-   onChangePage = (p) => {
-      this.props.getUsersThunk(this.props.usersCountOnPage, p)
-      this.props.setCurrentPage(p)
-   }
-
-   render() {
-      return <> {this.props.isFetching
+      return <> {
+         props.isFetching
          ? <Preloader />
-         : <Users totalUsersCount={this.props.totalUsersCount}
-            usersCountOnPage={this.props.usersCountOnPage}
-            currentPage={this.props.currentPage}
-            users={this.props.users}
-            onChangePage={this.onChangePage} 
-            buttonIsFetching={this.props.buttonIsFetching}
-            btn ={this.props.btn}
-            followUser={this.props.followUser}
-            unfollowUser ={this.props.unfollowUser}/>}
-      </>
-   }
+         : <Users totalUsersCount={totalUsersCount}
+            usersCountOnPage={usersCountOnPage}
+            currentPage={currentPage}
+            users={users}
+            onChangePage={onChangePage} 
+            buttonIsFetching={buttonIsFetching}
+            btn ={btn}
+            followUser={followUser}
+            unfollowUser ={unfollowUser}/>
+            }</>
 }
 
 function f1(state) {

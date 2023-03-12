@@ -1,0 +1,43 @@
+.loginform {
+   display: flex;
+   flex-direction: column;
+   width: 450px;
+   height:auto;
+   padding: 10px;
+   border-radius: 8px;
+   background-color: rgb(110, 155, 214);
+   justify-content: space-between;
+   margin: 100px auto;
+   color: white;
+}
+
+h1 {
+   text-align: center;
+   font-weight: 800;
+}
+
+.inputField input {
+   height: 30px;
+   margin: 10px 0;
+   width: 280px;
+}
+
+.inputs {
+   display: flex;
+   justify-content: space-around;
+   flex-direction: column;
+}
+
+.inputField {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.rememberMeBlock {
+   margin-bottom: 20px;
+}
+
+.rememberMeBlock input {
+   width: auto;
+}

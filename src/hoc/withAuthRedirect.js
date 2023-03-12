@@ -9,13 +9,11 @@ function f1 (state) {
 }
 
 export const withAuthRedirect =(Component)=> {
-   class RedirectComponent extends React.Component {
-      render(){
-         if (!this.props.isAuth){
+   function RedirectComponent(props) {
+         if (!props.isAuth){
             return <Navigate to = '/login'/>
          }
-         return <Component {...this.props} />
-      } 
+         return <Component {...props} />  
    }
    let connectedAuthComponent = connect (f1) (RedirectComponent)
 

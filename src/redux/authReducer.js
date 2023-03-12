@@ -5,7 +5,7 @@ let initState ={
    email: null,
    userId:null,
    avatar: null,
-   isAuth: false,
+   isAuth: true, // FIX
 }
 
 function authReducer(state = initState, action) {
@@ -19,13 +19,17 @@ function authReducer(state = initState, action) {
             avatar: action.avatar,
             isAuth: true
          }
-
+      case 'LOGOUT':
+         return {
+            ...initState
+         }
          default: 
          return state
    }
 }
 
 export const setAuthUser = (id, login, email, avatar) => ({type: 'SET_AUTH_USER_PROFILE', login, email, id, avatar})
+export const logout =()=>({type: 'LOGOUT'})
 
 export const setAuthUserDataThunk = (noavatar)=> dispatch=>{
    userApi.authMe().then(response => {
@@ -40,5 +44,6 @@ export const setAuthUserDataThunk = (noavatar)=> dispatch=>{
       }
    })
 }
+
 
 export default authReducer
